@@ -1,3 +1,6 @@
+// COMSC-210 | Lab 20 | Jed Aficial |
+// github link: https://github.com/jaficial/210-lab-20
+
 #include <iostream>
 #include <iomanip>
 
