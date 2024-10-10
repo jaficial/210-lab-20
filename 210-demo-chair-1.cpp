@@ -22,7 +22,7 @@ public:
     // constructors
     Chair() {
         prices = new double[SIZE];
-        legs = 0;
+        legs = 3 + rand() % 4;
         for (int i = 0; i < SIZE; i++)
             prices[i] = 0;
     }
@@ -34,15 +34,15 @@ public:
     }
 
     // setters and getters
-    void setLegs(int l)      { legs = l; }
-    int getLegs()            { return legs; }
-
-    void setPrices(double p1, double p2, double p3) { 
+     void setLegs(int l)      { legs = l; } <- ORIGINAL CODE
+     int getLegs()            { return legs; } <- ORIGINAL CODE
+	
+    void setPrices() { 
         // setPrices now sets random prices from 100.00 to 999.99
 	for (int i = 0; i < SIZE; i++){
 		prices[i] = 100 + (rand() % (MAX-MIN + 1) / (double) 100);
 	}
-	//prices[0] = p1; prices[1] = p2; prices[2] = p3; <- original code  
+	//prices[0] = p1; prices[1] = p2; prices[2] = p3; <- ORIGINAL CODE  
     }
 
     double getAveragePrices() {
