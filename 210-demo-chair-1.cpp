@@ -6,7 +6,7 @@
 
 using namespace std;
 const int SIZE = 3;
-
+const int MIN = 10000, MAX = 99999;
 
 // NOTE: Need to change the constructor:
 // 	- instead of assigningnull values to the legs of the chair, assign random numbers (3 or 4 legs)
@@ -38,7 +38,11 @@ public:
     int getLegs()            { return legs; }
 
     void setPrices(double p1, double p2, double p3) { 
-        prices[0] = p1; prices[1] = p2; prices[2] = p3; 
+        // setPrices now sets random prices from 100.00 to 999.99
+	for (int i = 0; i < SIZE; i++){
+		prices[i] = 100 + (rand() % (MAX-MIN + 1) / (double) 100);
+	}
+	//prices[0] = p1; prices[1] = p2; prices[2] = p3; <- original code  
     }
 
     double getAveragePrices() {
