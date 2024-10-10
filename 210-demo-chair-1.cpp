@@ -29,7 +29,7 @@ public:
     }
     Chair(int l, double *prices_array) {
         prices = new double[SIZE];
-        legs = 0;
+        legs = rand() % ((legMAX-legMIN) + 1) + legMIN;
         for (int i = 0; i < SIZE; i++)
             prices[i] = 0;
     }
@@ -79,21 +79,24 @@ int main() {
     livingChair->print();
     delete livingChair;
     livingChair = nullptr;
-
+    */
     //creating dynamic array of chair objects
     // ORIGINAL line 67
     Chair *collection = new Chair[SIZE];
-    collection[0].setLegs(4);
-    collection[0].setPrices(441.41, 552.52, 663.63);
-    collection[1].setLegs(4);
-    collection[1].setPrices(484.84, 959.59, 868.68);
-    collection[2].setLegs(4);
-    collection[2].setPrices(626.26, 515.15, 757.57);
+    collection[0]->setLegs();
+    collection[0]->setPrices();
+    collection[1]->setLegs();
+    collection[1]->setPrices();
+    collection[2]->setLegs();
+    collection[2]->setPrices();
     for (int i = 0; i < SIZE; i++)
-        collection[i].print();
-    */
+        collection[i]->print();
+    
+
+/*
     Chair *testing_char = new Chair;
     testing_char->setPrices();
-
+    testing_char->print();
+    delete testing_char; */
     return 0;
 } //
