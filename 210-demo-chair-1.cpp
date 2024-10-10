@@ -7,6 +7,12 @@
 using namespace std;
 const int SIZE = 3;
 
+
+// NOTE: Need to change the constructor:
+// 	- instead of assigningnull values to the legs of the chair, assign random numbers (3 or 4 legs)
+// 	- select random price between 100.00 to 999.99
+// 	- create a parameter constructor to hold an array of 3 doubles (the prices)
+// 	- in third code block (line 67), have the default constructors populate objects
 class Chair {
 private:
     int legs;
@@ -68,6 +74,7 @@ int main() {
     livingChair = nullptr;
 
     //creating dynamic array of chair objects
+    // original line 67
     Chair *collection = new Chair[SIZE];
     collection[0].setLegs(4);
     collection[0].setPrices(441.41, 552.52, 663.63);
