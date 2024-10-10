@@ -82,6 +82,9 @@ int main() {
     */
     //creating dynamic array of chair objects
     // ORIGINAL line 67
+    //
+    //
+    // NEED TO COME BACK TO FIX OUTPUT
     Chair *collection = new Chair[SIZE];
     collection[0]->setLegs();
     collection[0]->setPrices();
