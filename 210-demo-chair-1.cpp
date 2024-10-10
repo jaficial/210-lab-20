@@ -27,7 +27,7 @@ public:
         for (int i = 0; i < SIZE; i++)
             prices[i] = 0;
     }
-    Chair(int l) {
+    Chair(int l, double *prices_array) {
         prices = new double[SIZE];
         legs = 0;
         for (int i = 0; i < SIZE; i++)
@@ -35,8 +35,8 @@ public:
     }
 
     // setters and getters
-     void setLegs(int l)      { legs = l; }
-     int getLegs()            { return legs; }
+    void setLegs(int l)      { legs = l; }
+    int getLegs()            { return legs; }
 	
     void setPrices() { 
         // setPrices now sets random prices from 100.00 to 999.99
@@ -65,7 +65,8 @@ public:
 
 int main() {
     cout << fixed << setprecision(2);
-
+    
+    /*
     //creating pointer to first chair object
     Chair *chairPtr = new Chair;
     chairPtr->setLegs(4);
@@ -80,7 +81,7 @@ int main() {
     livingChair = nullptr;
 
     //creating dynamic array of chair objects
-    // original line 67
+    // ORIGINAL line 67
     Chair *collection = new Chair[SIZE];
     collection[0].setLegs(4);
     collection[0].setPrices(441.41, 552.52, 663.63);
@@ -90,6 +91,9 @@ int main() {
     collection[2].setPrices(626.26, 515.15, 757.57);
     for (int i = 0; i < SIZE; i++)
         collection[i].print();
-    
+    */
+    Chair *testing_char = new Chair;
+    testing_char->setPrices();
+
     return 0;
 } //
