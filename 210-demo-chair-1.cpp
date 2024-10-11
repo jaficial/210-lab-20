@@ -86,8 +86,7 @@ int main() {
     //
     // NEED TO COME BACK TO FIX OUTPUT
     Chair *collection = new Chair[SIZE];
-    collection[0]->setLegs();
-    collection[0]->setPrices();
+    collection[0].setPrices();
     collection[1]->setLegs();
     collection[1]->setPrices();
     collection[2]->setLegs();
