@@ -9,12 +9,6 @@ const int SIZE = 3;
 const int MIN = 10000, MAX = 99999;
 const int legMIN = 3, legMAX = 4;
 
-// NOTE: Need to change the constructor:
-// 	- instead of assigning null values to the legs of the chair, assign random numbers (3 or 4 legs)
-// 	- select random price between 100.00 to 999.99
-// 	- change parameter constructor to also hold an array of 3 doubles (the prices) for 
-// 	- in third code block (line 67), have the default constructors populate objects
-
 class Chair {
 private:
     int legs;
@@ -22,9 +16,10 @@ private:
 public:
     // default constructor
     Chair() {
+        // minimum and maximum values for legs are defined to select either 3 or 4 legs
         prices = new double[SIZE];
         legs = rand() % ((legMAX-legMIN) + 1) + legMIN;
-        // for loop sets random prices if a parameter isn't given
+        // for loop sets random prices if a parameters isn't given for the prices
         for (int i = 0; i < SIZE; i++){
 		    prices[i] = 100 + (rand() % (MAX-MIN + 1) / (double) 100); // sets price to random number between 100.00 to 999.99
 	    }
@@ -65,28 +60,28 @@ public:
 
 int main() {
     cout << fixed << setprecision(2);
-
-    //creating pointer to first chair object
+    // creating pointer to first chair object
     Chair *chairPtr = new Chair;
     chairPtr->setLegs(4);
     chairPtr->setPrices(121.21, 232.32, 414.14);
     chairPtr->print();
     
-    //creating dynamic chair object with constructor
-    Chair *livingChair = new Chair(3, );
+    // creating dynamic chair object with constructor
+    double *livingChair_arr[3];
+    Chair *livingChair = new Chair(3, *livingChair_arr);
     livingChair->setPrices(525.25, 434.34, 252.52);
     livingChair->print();
     delete livingChair;
     livingChair = nullptr;
     
-    cout << "The following output utilizes the default constructor for the Chair class: \n";
-    //creating dynamic array of chair objects
+    // creating dynamic array of chair objects using the default constructor
+    cout << "The following output utilizes the default constructor for the Chair class: \n\n";
     Chair *collection = new Chair[SIZE];
     for (int i = 0; i < SIZE; i++)
         collection[i].print();
     delete [] collection;
 
-
+    // singular chair object using the defualt constructor
     Chair *testing_chair = new Chair;
     testing_chair->print();
     delete testing_chair; 
