@@ -20,16 +20,21 @@ private:
     int legs;
     double * prices;
 public:
-    // constructors
+    // default constructor
     Chair() {
         prices = new double[SIZE];
         legs = rand() % ((legMAX-legMIN) + 1) + legMIN;
+        for (int i = 0; i < SIZE; i++){
+		    prices[i] = 100 + (rand() % (MAX-MIN + 1) / (double) 100); // sets price to random number between 100.00 to 999.99
+	    }
         for (int i = 0; i < SIZE; i++)
             prices[i] = 0;
+    // parameter constructor    
     }
     Chair(int l, double *prices_array) {
         prices = new double[SIZE];
-        legs = rand() % ((legMAX-legMIN) + 1) + legMIN;
+        //legs = rand() % ((legMAX-legMIN) + 1) + legMIN;
+        legs = l;
         for (int i = 0; i < SIZE; i++)
             prices[i] = 0;
     }
@@ -38,12 +43,9 @@ public:
     void setLegs(int l)      { legs = l; }
     int getLegs()            { return legs; }
 	
-    void setPrices() { 
-        // setPrices now sets random prices from 100.00 to 999.99
-	for (int i = 0; i < SIZE; i++){
-		prices[i] = 100 + (rand() % (MAX-MIN + 1) / (double) 100);
-	}
-	//prices[0] = p1; prices[1] = p2; prices[2] = p3; <- ORIGINAL CODE  
+    void setPrices(double p1, double p2, double p3) { 
+        
+	    prices[0] = p1; prices[1] = p2; prices[2] = p3;   
     }
 
     double getAveragePrices() {
@@ -72,28 +74,27 @@ int main() {
     chairPtr->setLegs(4);
     chairPtr->setPrices(121.21, 232.32, 414.14);
     chairPtr->print();
-
-    //creating dynamic chair object with constructor
-    Chair *livingChair = new Chair(3);
-    livingChair->setPrices(525.25, 434.34, 252.52);
-    livingChair->print();
-    delete livingChair;
-    livingChair = nullptr;
     */
+    //creating dynamic chair object with constructor
+    // Chair *livingChair = new Chair(3);
+    // livingChair->setPrices(525.25, 434.34, 252.52);
+    // livingChair->print();
+    // delete livingChair;
+    // livingChair = nullptr;
+    
     //creating dynamic array of chair objects
     // ORIGINAL line 67
     //
     //
     // NEED TO COME BACK TO FIX OUTPUT
     Chair *collection = new Chair[SIZE];
-    collection[0].setPrices();
-    collection[1]->setLegs();
-    collection[1]->setPrices();
-    collection[2]->setLegs();
-    collection[2]->setPrices();
+    // collection[0].setPrices();
+    // collection[1].setPrices();
+    // collection[2].setPrices();
     for (int i = 0; i < SIZE; i++)
-        collection[i]->print();
+        collection[i].print();
     
+    delete [] collection;
 
 /*
     Chair *testing_char = new Chair;
@@ -101,4 +102,4 @@ int main() {
     testing_char->print();
     delete testing_char; */
     return 0;
-} //
+} 
