@@ -10,9 +10,9 @@ const int MIN = 10000, MAX = 99999;
 const int legMIN = 3, legMAX = 4;
 
 // NOTE: Need to change the constructor:
-// 	- instead of assigningnull values to the legs of the chair, assign random numbers (3 or 4 legs)
+// 	- instead of assigning null values to the legs of the chair, assign random numbers (3 or 4 legs)
 // 	- select random price between 100.00 to 999.99
-// 	- create a parameter constructor to hold an array of 3 doubles (the prices)
+// 	- change parameter constructor to also hold an array of 3 doubles (the prices) for 
 // 	- in third code block (line 67), have the default constructors populate objects
 
 class Chair {
@@ -24,16 +24,15 @@ public:
     Chair() {
         prices = new double[SIZE];
         legs = rand() % ((legMAX-legMIN) + 1) + legMIN;
+        // for loop sets random prices if a parameter isn't given
         for (int i = 0; i < SIZE; i++){
 		    prices[i] = 100 + (rand() % (MAX-MIN + 1) / (double) 100); // sets price to random number between 100.00 to 999.99
 	    }
-        for (int i = 0; i < SIZE; i++)
-            prices[i] = 0;
-    // parameter constructor    
+        
+    // parameter constructor now has parameter for prices array
     }
     Chair(int l, double *prices_array) {
         prices = new double[SIZE];
-        //legs = rand() % ((legMAX-legMIN) + 1) + legMIN;
         legs = l;
         for (int i = 0; i < SIZE; i++)
             prices[i] = 0;
@@ -44,7 +43,6 @@ public:
     int getLegs()            { return legs; }
 	
     void setPrices(double p1, double p2, double p3) { 
-        
 	    prices[0] = p1; prices[1] = p2; prices[2] = p3;   
     }
 
@@ -67,39 +65,30 @@ public:
 
 int main() {
     cout << fixed << setprecision(2);
-    
-    /*
+
     //creating pointer to first chair object
     Chair *chairPtr = new Chair;
     chairPtr->setLegs(4);
     chairPtr->setPrices(121.21, 232.32, 414.14);
     chairPtr->print();
-    */
-    //creating dynamic chair object with constructor
-    // Chair *livingChair = new Chair(3);
-    // livingChair->setPrices(525.25, 434.34, 252.52);
-    // livingChair->print();
-    // delete livingChair;
-    // livingChair = nullptr;
     
+    //creating dynamic chair object with constructor
+    Chair *livingChair = new Chair(3, );
+    livingChair->setPrices(525.25, 434.34, 252.52);
+    livingChair->print();
+    delete livingChair;
+    livingChair = nullptr;
+    
+    cout << "The following output utilizes the default constructor for the Chair class: \n";
     //creating dynamic array of chair objects
-    // ORIGINAL line 67
-    //
-    //
-    // NEED TO COME BACK TO FIX OUTPUT
     Chair *collection = new Chair[SIZE];
-    // collection[0].setPrices();
-    // collection[1].setPrices();
-    // collection[2].setPrices();
     for (int i = 0; i < SIZE; i++)
         collection[i].print();
-    
     delete [] collection;
 
-/*
-    Chair *testing_char = new Chair;
-    testing_char->setPrices();
-    testing_char->print();
-    delete testing_char; */
+
+    Chair *testing_chair = new Chair;
+    testing_chair->print();
+    delete testing_chair; 
     return 0;
 } 
